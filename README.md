@@ -1,27 +1,104 @@
 # PAMWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+Aquí está el README actualizado con los bloques de código formateados y resaltados para copiar y pegar comandos:
 
-## Development server
+PAMWeb
+##Proyecto web para la administración de admisiones a maestrías.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+##Este proyecto fue generado con Angular CLI versión 14.2.6.
 
-## Code scaffolding
+Requisitos previos
+Docker
+Docker Compose
+Configuración del entorno con Docker
+Sigue los pasos a continuación para construir y ejecutar el proyecto con Docker.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clonar el repositorio
+Clona el repositorio localmente:
 
-## Build
+ ```bas
+Copiar código
+git clone https://github.com/JonnyJaimes/pamweb.git
+ ```
+cd pamweb
+2. Construir la imagen de Docker
+Construye la imagen Docker utilizando el Dockerfile incluido:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ ```bash
+Copiar código
+sudo docker build -t pamweb .
+ ```
 
-## Running unit tests
+3. Ejecutar el contenedor
+Ejecuta el contenedor con el nombre pamweb-container y expone la aplicación en el puerto 4200:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ ```bash
+Copiar código
+sudo docker run -p 4200:80 --name pamweb-container pamweb
+Ahora, puedes acceder a la aplicación en tu navegador a través de: http://localhost:4200.
+ ```
 
-## Running end-to-end tests
+4. Detener y eliminar el contenedor
+Para detener el contenedor que está en ejecución:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ ```bash
+Copiar código
+sudo docker stop pamweb-container
+Para eliminar el contenedor:
+ ```
+bash
+Copiar código
+sudo docker rm pamweb-container
+5. Uso de Docker Compose (opcional)
+Si tienes un archivo docker-compose.yml, puedes iniciar todos los servicios definidos con:
 
-## Further help
+ ```bash
+Copiar código
+sudo docker-compose up --build
+Para detener los servicios ejecutados con Docker Compose:
+ ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+ ```bash
+Copiar código
+sudo docker-compose down
+6. Comandos útiles
+Verificar los contenedores activos:
+
+ ```
+
+ ```bash
+Copiar código
+sudo docker ps
+Ver los registros de un contenedor en ejecución:
+ ```
+
+ ```bash
+Copiar código
+sudo docker logs pamweb-container
+Eliminar una imagen de Docker:
+
+ ```
+
+ ```bash
+Copiar código
+sudo docker rmi pamweb
+
+ ```
+
+##Notas adicionales
+####Asegúrate de que el puerto 4200 esté libre antes de ejecutar el contenedor.
+
+####Si realizas cambios en la aplicación, deberás reconstruir la imagen usando el comando docker build antes de volver a ejecutar el contenedor.
+####Desarrollo con Angular CLI
+####Ejecuta ng serve para un servidor de desarrollo. Navega a http://localhost:4200. La aplicación se recargará automáticamente si cambias cualquiera de los archivos fuente.
+###Code scaffolding
+###Ejecuta ng generate component component-name para generar un nuevo componente. También puedes usar ng generate directive|pipe|service|class|guard|interface|enum|module.
+Build
+Ejecuta ng build para compilar el proyecto. Los artefactos de la compilación se almacenarán en el directorio dist/.
+Ejecutar pruebas unitarias
+Ejecuta ng test para ejecutar las pruebas unitarias a través de Karma.
+Ejecutar pruebas end-to-end
+Ejecuta ng e2e para ejecutar las pruebas end-to-end utilizando una plataforma de tu elección. Para usar este comando, primero debes agregar un paquete que implemente capacidades de pruebas end-to-end.
+Ayuda adicional
+Para obtener más ayuda sobre Angular CLI, usa ng help o consulta la página oficial de Angular CLI.
